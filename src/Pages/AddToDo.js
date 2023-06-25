@@ -1,20 +1,19 @@
-import { Button, Snackbar, TextField, Typography, Slide, IconButton  } from '@mui/material'
+import { Button, Snackbar, TextField, Typography } from '@mui/material'
 import { Box, Container } from '@mui/system'
 import React, { useState } from 'react'
 import moment from 'moment'
 import axios from 'axios'
-import CloseIcon from '@mui/icons-material/Close';
 import MuiAlert from '@mui/material/Alert';
 
 
-
+// MUI alert with custom alert
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 
 function AddToDo() {
-
+    // states
     const [toDos, setToDos] = useState({
         description: '',
         category: '',
@@ -28,7 +27,7 @@ function AddToDo() {
     const [open, setOpen] = useState(false);
     const [customVariant, setCustomVariant] = React.useState('success')
 
-
+    // handle date changes on input
     const handleChangeData = (evt) => {
         setToDos({
             ...toDos,
@@ -39,6 +38,7 @@ function AddToDo() {
         })
     };
 
+    // handle input change
     const handleChange = (evt) => {
         setToDos({
             ...toDos,
@@ -58,6 +58,7 @@ function AddToDo() {
         setOpen(false);
     }
 
+    // adding data to fake json server
     const addToDo = async(evt) => {
         evt.preventDefault()
         
@@ -71,7 +72,7 @@ function AddToDo() {
             })
         }else{
             
-            return await axios.post(`http://localhost:4000/posts`, toDos).then((response) => {
+            return await axios.post(`https://my-json-server.typicode.com/Karimansari4/TodolistReactapp/posts`, toDos).then((response) => {
                 setSuccess("ToDo added successfully.")
                 setCustomVariant('success')
                 setOpen(true)

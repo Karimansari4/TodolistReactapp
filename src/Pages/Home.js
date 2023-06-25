@@ -24,7 +24,8 @@ function Home() {
 
     // this is fetch all the data from database
     const fetchToDos = async() =>{
-        return await axios.get(`http://localhost:4000/posts`).then((response) => {
+        // return await axios.get(`http://localhost:4000/posts`).then((response) => {
+        return await axios.get(`https://my-json-server.typicode.com/Karimansari4/TodolistReactapp/posts`).then((response) => {
             setToDos(response.data)
             setLoading(false)
         // console.log("data: ", response.data.result);
@@ -53,7 +54,7 @@ function Home() {
 
     // task delete function
     const deleteToDos = async(id) => {
-        return axios.delete(`http://localhost:4000/posts/${id}`).then((response) => {
+        return axios.delete(`https://my-json-server.typicode.com/Karimansari4/TodolistReactapp/posts/${id}`).then((response) => {
             setCustomVariant('success')
             setSuccess("ToDo deleted successfully.")
             setOpen(true)

@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Box, Container } from '@mui/system'
 import { Button, Snackbar, TextField, Typography, Slide, IconButton  } from '@mui/material'
-import moment from 'moment'
 import MuiAlert from '@mui/material/Alert';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -33,7 +32,7 @@ function UpdateToDo() {
 
     // fetching single data by id
     const fetchById = async() => {   
-        return await axios.get(`http://localhost:4000/posts/${id}`).then((response) => {
+        return await axios.get(`https://my-json-server.typicode.com/Karimansari4/TodolistReactapp/posts/${id}`).then((response) => {
             setToDos(response.data)
             // console.log("response: ", response.data.result);
         }).catch((err) => {
@@ -73,7 +72,7 @@ function UpdateToDo() {
                 category: 'Please enter category of ToDo'
             })
         }else{
-            return await axios.put(`http://localhost:4000/posts/${id}`, toDos).then((response) => {
+            return await axios.put(`https://my-json-server.typicode.com/Karimansari4/TodolistReactapp/posts/${id}`, toDos).then((response) => {
                 setSuccess("Update Successfully.")
                 // console.log("success: ", response);
                 setCustomVariant('success')
